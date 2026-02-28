@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: node:20-alpine
+    container_name: quick-reserve-frontend
+    ports:
+      - "3000:3000"
+    command: sh -c "echo 'Frontend running' && tail -f /dev/null"
+
+  backend:
+    image: node:20-alpine
+    container_name: quick-reserve-backend
+    ports:
+      - "5000:5000"
+    command: sh -c "echo 'Backend running' && tail -f /dev/null"
+
+  database:
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
+    container_name: quick-reserve-db
+    ports:
+      - "8081:8081"
+      - "10251-10255:10251-10255"
