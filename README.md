@@ -20,4 +20,4 @@
 * [x] **Artefakt 2:** Środowisko wielokontenerowe uruchomione lokalnie (Docker Compose).
 
 ## 🔗 Repository
-* **Remote:** https://github.com/TWÓJ_LOGIN/quick-reserve-pro
+* **Remote:** https://github.com/DanielW9/QuickReservePro
