@@ -18,6 +18,7 @@
 ## 🚦 Status Projektu
 * [x] **Artefakt 1:** Architektura i struktura folderów.
 * [x] **Artefakt 2:** Środowisko wielokontenerowe uruchomione lokalnie (Docker Compose).
+* [x] **Artefakt 3:** Implementacja Frontendu (React + Vite) w kontenerze.
 
 ## 🔗 Repository
 * **Remote:** https://github.com/DanielW9/QuickReservePro
