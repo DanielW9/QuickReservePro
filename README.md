@@ -15,11 +15,12 @@
 | Baza danych | Azure Cosmos DB | NoSQL-owa baza danych dla rezerwacji |
 | Przechowywanie obrazów | Azure Blob Storage | (Opcjonalnie) Zdjęcia sal/biurek |
 
-## 🚦 Status Projektu
+##  Status Projektu
 * [x] **Artefakt 1:** Architektura i struktura folderów.
 * [x] **Artefakt 2:** Środowisko wielokontenerowe uruchomione lokalnie (Docker Compose).
 * [x] **Artefakt 3:** Implementacja Frontendu (React + Vite) w kontenerze.
 * [x] **Artefakt 4:** Implementacja Backend API (NestJS), pełny CRUD oraz konteneryzacja obrazu backendu.
+* [x] **Artefakt 5:** Pełna integracja systemowa, wzorzec DTO i trwałość danych.
 
-## 🔗 Repository
+##  Repository
 * **Remote:** https://github.com/DanielW9/QuickReservePro

@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ReservationsService } from './reservations.service';
 import { CreateReservationDto } from './dto/create-reservation.dto';
 import { UpdateReservationDto } from './dto/update-reservation.dto';
+import { ReservationReadDto } from './dto/reservation-read.dto';
 
 @Controller('reservations')
 export class ReservationsController {
@@ -13,13 +14,12 @@ export class ReservationsController {
   }
 
   @Get()
-  findAll() {
-    return this.reservationsService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.reservationsService.findOne(+id);
+  async findAll(): Promise<ReservationReadDto[]> {
+    const rawData = (await this.reservationsService.findAll() as unknown) as any[];
+    return rawData.map((res: any) => ({
+      id: res._id || res.id,
+      name: res.name,
+    }));
   }
 
   @Patch(':id')

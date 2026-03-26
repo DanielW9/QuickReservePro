@@ -1,23 +1,28 @@
 version: '3.8'
-
 services:
-  frontend:
-    image: node:20-alpine
-    container_name: quick-reserve-frontend
-    ports:
-      - "3000:3000"
-    command: sh -c "echo 'Frontend running' && tail -f /dev/null"
-
   backend:
-    image: node:20-alpine
-    container_name: quick-reserve-backend
-    ports:
-      - "5000:5000"
-    command: sh -c "echo 'Backend running' && tail -f /dev/null"
-
-  database:
-    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
-    container_name: quick-reserve-db
+    build: ./server
+    container_name: q-res-backend
     ports:
       - "8081:8081"
-      - "10251-10255:10251-10255"
+    depends_on:
+      - database
+    environment:
+      - DATABASE_URL=mongodb://database:27017/quickreserve
+
+  database:
+    image: mongo:latest
+    container_name: q-res-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - q_res_data:/data/db
+
+  frontend:
+    build: ./client
+    container_name: q-res-frontend
+    ports:
+      - "5173:5173"
+
+volumes:
+  q_res_data:
