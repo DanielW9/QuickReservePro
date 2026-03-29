@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "VmfNxdvTlqXdnRigenIVRAa3tecS2xcFv8fb0aeLRB0=",
+  "Source": "QuickReserveServer",
+  "BasePath": "_content/QuickReserveServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

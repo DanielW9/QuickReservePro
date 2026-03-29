@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function App() {
   const [data, setData] = useState([]);
-  const apiUrl = "http://localhost:8081"; 
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8081";
 
   useEffect(() => {
     axios.get(`${apiUrl}/reservations`)

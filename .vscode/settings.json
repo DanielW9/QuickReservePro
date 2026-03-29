@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/c1aa432b-b6bb-455c-ae77-cd79624cb67f/resourceGroups/quickreserve-api-daniel_group/providers/Microsoft.Web/sites/quickreserve-api-daniel",
+    "appService.deploySubpath": ""
+}
