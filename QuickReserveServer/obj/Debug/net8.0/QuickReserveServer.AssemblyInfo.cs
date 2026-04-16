@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuickReserveServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b730a2c81ff6eb70c523d2479f1a0ac009f7c6dc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b1fb1f66a552fdc8d6cabe0c3d47ab1f43bd5d2")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuickReserveServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuickReserveServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

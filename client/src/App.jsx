@@ -9,9 +9,8 @@ function App() {
     axios.get(`${apiUrl}/reservations`)
       .then(res => {
         setData(res.data);
-        console.log("Dane pobrane pomyślnie!");
       })
-      .catch(err => console.log("Oczekiwanie na API pod adresem: " + apiUrl));
+      .catch(err => console.log("Błąd połączenia z API"));
   }, [apiUrl]);
 
   const handleAdd = async () => {
@@ -25,15 +24,35 @@ function App() {
     }
   };
 
+  const handleDelete = async (id) => {
+    if (!window.confirm("Czy na pewno chcesz usunąć?")) return;
+    try {
+      await axios.delete(`${apiUrl}/reservations/${id}`);
+      setData(data.filter(item => (item.id || item._id) !== id));
+    } catch (err) {
+      alert("Błąd usuwania!");
+    }
+  };
+
   return (
-    <div style={{ padding: '20px', backgroundColor: '#121212', color: 'white', minHeight: '100vh' }}>
+    <div style={{ padding: '20px', backgroundColor: '#121212', color: 'white', minHeight: '100vh', fontFamily: 'Arial' }}>
       <h1>QuickReserve Pro - Dashboard</h1>
       <div style={{ border: '1px solid #444', padding: '20px', borderRadius: '8px' }}>
         <h3>Lista rezerwacji:</h3>
-        <button onClick={handleAdd} style={{ marginBottom: '10px', padding: '10px' }}>Dodaj nową</button>
-        
+        <button onClick={handleAdd} style={{ marginBottom: '10px', padding: '10px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px' }}>
+          Dodaj nową
+        </button>
         {data.length > 0 ? (
-          <ul>{data.map((item, i) => <li key={i}>{item.name} (ID: {item.id || item._id})</li>)}</ul>
+          <ul style={{ listStyle: 'none', padding: 0 }}>
+            {data.map((item, i) => (
+              <li key={i} style={{ padding: '10px', borderBottom: '1px solid #333', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span>{item.name} <small style={{ color: '#888' }}>(ID: {item.id || item._id})</small></span>
+                <button onClick={() => handleDelete(item.id || item._id)} style={{ backgroundColor: '#dc3545', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '4px' }}>
+                  Usuń
+                </button>
+              </li>
+            ))}
+          </ul>
         ) : (
           <p>Brak danych (Połączono z: {apiUrl})</p>
         )}
@@ -41,4 +60,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
