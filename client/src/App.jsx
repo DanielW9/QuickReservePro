@@ -10,7 +10,7 @@ function App() {
       .then(res => {
         setData(res.data);
       })
-      .catch(err => console.log("Błąd połączenia z API"));
+      .catch(err => console.log("Błąd połączenia z API pod adresem: " + apiUrl));
   }, [apiUrl]);
 
   const handleAdd = async () => {
@@ -25,12 +25,12 @@ function App() {
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Czy na pewno chcesz usunąć?")) return;
+    if (!window.confirm("Czy na pewno chcesz usunąć tę rezerwację?")) return;
     try {
       await axios.delete(`${apiUrl}/reservations/${id}`);
       setData(data.filter(item => (item.id || item._id) !== id));
     } catch (err) {
-      alert("Błąd usuwania!");
+      alert("Błąd podczas usuwania!");
     }
   };
 
@@ -39,15 +39,19 @@ function App() {
       <h1>QuickReserve Pro - Dashboard</h1>
       <div style={{ border: '1px solid #444', padding: '20px', borderRadius: '8px' }}>
         <h3>Lista rezerwacji:</h3>
-        <button onClick={handleAdd} style={{ marginBottom: '10px', padding: '10px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px' }}>
+        <button onClick={handleAdd} style={{ marginBottom: '10px', padding: '10px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
           Dodaj nową
         </button>
+        
         {data.length > 0 ? (
           <ul style={{ listStyle: 'none', padding: 0 }}>
             {data.map((item, i) => (
               <li key={i} style={{ padding: '10px', borderBottom: '1px solid #333', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span>{item.name} <small style={{ color: '#888' }}>(ID: {item.id || item._id})</small></span>
-                <button onClick={() => handleDelete(item.id || item._id)} style={{ backgroundColor: '#dc3545', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '4px' }}>
+                <button 
+                  onClick={() => handleDelete(item.id || item._id)} 
+                  style={{ backgroundColor: '#dc3545', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}
+                >
                   Usuń
                 </button>
               </li>
