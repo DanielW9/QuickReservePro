@@ -1,10 +1,21 @@
-namespace QuickReserveTests;
+using Xunit;
+using QuickReserveServer.Models;
 
-public class UnitTest1
+namespace QuickReserveTests
 {
-    [Fact]
-    public void Test1()
+    public class UnitTest1
     {
+        [Fact]
+        public void NewTask_ShouldNotBeCompleted()
+        {
+            
+            var task = new CloudTask();
 
+            
+            task.Name = "Przetestować bezpiecznik";
+
+            
+            Assert.False(task.IsCompleted, "Nowo utworzone zadanie powinno mieć status IsCompleted = false.");
+        }
     }
 }

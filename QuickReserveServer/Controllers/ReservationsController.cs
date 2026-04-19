@@ -25,4 +25,19 @@ public class ReservationsController : ControllerBase {
         await _context.SaveChangesAsync();
         return Ok();
     }
+
+    
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id) {
+        var reservation = await _context.Reservations.FindAsync(id);
+        
+        if (reservation == null) {
+            return NotFound();
+        }
+
+        _context.Reservations.Remove(reservation);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
 }
