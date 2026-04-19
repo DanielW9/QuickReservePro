@@ -10,7 +10,8 @@ if (!builder.Environment.IsDevelopment())
     builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
 }
 
-var connectionString = builder.Configuration["DbConnectionString"];
+var connectionString = builder.Configuration["DbConnectionString"] 
+                    ?? builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));

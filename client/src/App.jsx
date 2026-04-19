@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <div style={{ padding: '20px', backgroundColor: '#121212', color: 'white', minHeight: '100vh', fontFamily: 'Arial' }}>
+    <div style={{ padding: '20px', backgroundColor: '#144d1e', color: 'white', minHeight: '100vh', fontFamily: 'Arial'}}>
       <h1>QuickReserve Pro - Dashboard</h1>
       <div style={{ border: '1px solid #444', padding: '20px', borderRadius: '8px' }}>
         <h3>Lista rezerwacji:</h3>
